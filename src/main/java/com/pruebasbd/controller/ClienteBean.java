@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import com.pruebasbd.dao.ClienteDAO;
 import com.pruebasbd.model.Cliente;
+import com.pruebasbd.model.Direccion;
 
 @ManagedBean(name="clienteBean")
 @RequestScoped
@@ -17,13 +18,16 @@ public class ClienteBean {
 	
 	public String insertar(){
 		Cliente cliente = new Cliente();
+		Direccion direccion = new Direccion();
 		Map<String,Object> sessionMap=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		sessionMap.put("cliente", cliente);
+		sessionMap.put("direccion", direccion);
 		return "insertar.xhtml";
 	}
 	
-	public String guardar(Cliente cliente) {
+	public String guardar(Cliente cliente,Direccion direccion) {
 		ClienteDAO clienteDao = new ClienteDAO();
+		cliente.setDireccion(new Direccion(1L,direccion.getDireccion(),direccion.getPais(),direccion.getPais()));
 		clienteDao.guardar(cliente);
 		return "index.xhtml";
 	}

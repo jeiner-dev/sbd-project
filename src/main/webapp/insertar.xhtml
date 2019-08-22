@@ -18,11 +18,17 @@
 	    	<h:outputText value="Apellido"></h:outputText>
 	    	<h:inputText value="#{cliente.apellido}"></h:inputText>
 	    	
-	    	<h:outputText value="Direccion"></h:outputText>
-	    	<h:inputText value="#{cliente.direccion}"></h:inputText>
+	    	<h:outputText value="direccion"></h:outputText>
+	    	<h:inputText value="#{direccion.direccion}"></h:inputText>
 	    	
+	    	<h:outputText value="pais"></h:outputText>
+	    	<h:inputText value="#{direccion.pais}"></h:inputText>
+	    	
+	    	<h:outputText value="ciudad"></h:outputText>
+	    	<h:inputText value="#{direccion.ciudad}"></h:inputText>
+	    	 
 	    	<f:facet name="footer">
-	    		<h:commandButton value="Insertar" action="#{clienteBean.guardar(cliente)}"></h:commandButton>
+	    		<h:commandButton value="Insertar" action="#{clienteBean.guardar(cliente,direccion)}"></h:commandButton>
 	    	</f:facet>
     	</h:panelGrid>
     </h:form>

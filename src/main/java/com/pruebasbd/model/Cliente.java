@@ -2,10 +2,13 @@ package com.pruebasbd.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +22,11 @@ public class Cliente {
 	private Long id;
 	private String nombre;
 	private String apellido;
-	private String direccion;
+	
+	@OneToOne(cascade = {CascadeType.PERSIST})
+	@JoinColumn(name="id_direccion")
+	private Direccion direccion;
+	
 	private String email;
 	private String telefono;
 	
@@ -50,11 +57,11 @@ public class Cliente {
 		this.apellido = apellido;
 	}
 
-	public String getDireccion() {
+	public Direccion getDireccion() {
 		return direccion;
 	}
 
-	public void setDireccion(String direccion) {
+	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
 
@@ -82,13 +89,11 @@ public class Cliente {
 		this.fechaRegistro = fechaRegistro;
 	}
 
+	
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", direccion=" + direccion
 				+ ", email=" + email + ", telefono=" + telefono + ", fechaRegistro=" + fechaRegistro + "]";
 	}
-	
-	
-	
 	
 }
