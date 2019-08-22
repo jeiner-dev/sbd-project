@@ -1,0 +1,4 @@
+com/pruebasbd/dao/ClienteDAO.class
+com/pruebasbd/model/Cliente.class
+com/pruebasbd/model/JPAUtil.class
+com/pruebasbd/controller/ClienteBean.class
